@@ -20,6 +20,15 @@ object GreeterImplementation {
   }
 }
 
+
+
+/*
+ Podemos usar el type class de dos maneras:
+  - Podemos hacer un interface a través de un objeto
+  - Podemos crear un ¿Syntax? que es una clase implícita a la que se convertirá la clase
+    con la que trabajamos. Por ejemplo, de String a GreeterSyntax. 
+*/
+
 import GreeterImplementation._
 
 // type class interface -> expone la funcionalidad del type class al usuario
@@ -31,9 +40,10 @@ object GreetInterface {
 
 GreetInterface.greet("Jero")
 
-
 // Esto falla porque no hay una implementación Greeter con ints
 // GreetSingleton.greet(10)
+
+
 
 // Si en lugar de un objeto encapsulamos el interfaz en una clase implícita
 
@@ -45,7 +55,8 @@ implicit class GreeterSyntax[A](value: A) {
 
 "Paco".greet
 
-/* En realizad Paco es 
+/* 
+ En realidad Paco es 
 
  GreeterSyntax[String]("Paco")
 

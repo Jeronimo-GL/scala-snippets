@@ -1,4 +1,5 @@
-val letras = List("a", "b", "c")
 
+
+val letras = List("a", "b", "c")
 
 letras.zipWithIndex

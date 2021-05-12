@@ -2,5 +2,6 @@
 *.log
 .bloop/
 .metals/
+.bsp/
 target/
 project/

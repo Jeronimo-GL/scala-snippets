@@ -4,5 +4,5 @@ ThisBuild / version          := "0.1.0-SNAPSHOT"
 lazy val root = (project in file("."))
   .settings(
     name := "Scala Snippets",
-    libraryDependencies ++= Seq( )
+    libraryDependencies ++= Seq("com.typesafe.akka" %% "akka-stream" % "2.6.14" )
 )

@@ -1,4 +1,4 @@
-package akka_streams
+package akka_streams.graph
 
 final case class Author(handle: String)
 final case class HashTag(name: String)

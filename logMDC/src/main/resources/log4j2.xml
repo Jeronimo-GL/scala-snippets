@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="OFF">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <Console name="ConsoleJSON" target="SYSTEM_OUT">
+            <JSONLayout compact="false" properties="true" propertiesAsList="false" eventEol="true" includeMDC="true">
+              <KeyValuePair key="timestamp" value="$${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}"/>
+              <KeyValuePair key="ProjectName" value="$${ctx:project:-}" />
+            </JSONLayout>
+        </Console>
+
+    </Appenders>
+    <Loggers>
+        <Logger name="com.bbva.turing.poc.ika" level="${sys:agent.log.level:-info}" additivity="false">
+            <AppenderRef ref="ConsoleJSON"/>
+        </Logger>
+        <Logger name="org.apache.kafka" level="${sys:kafka.log.level:-info}" additivity="false">
+            <AppenderRef ref="ConsoleJSON"/>
+        </Logger>
+        <Root level="${sys:root.log.level:-info}">
+            <AppenderRef ref="ConsoleJSON"/>
+        </Root>
+    </Loggers>
+</Configuration>

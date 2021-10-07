@@ -1,6 +1,13 @@
 {
     "configuration": {
-        "status": "INFO",
+        "properties":{
+            "property":[
+                {"name": "agentName", "value": "IKA"},
+                {"name": "imageName", "value": "radiola2"},
+                {"name": "k8s.imageId", "value": "radiola3"}
+            ]
+        },
+        "status": "OFF",
         "name": "JSONConfigDemo",
         "ThresholdFilter": {
             "level": "debug"
@@ -20,20 +27,21 @@
                         "propertiesAsList": "false",
                         "includeTimeMillis": "true",
                         "KeyValuePair":[
-                            { "key": "timestamp", "value": "${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}"},
+                            { "key": "timestamp", "value": "$${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}"},
                             { "key": "docker.containerId",  "value": "${docker:containerId:-NoDocker}"},
                             { "key": "docker.containerName",  "value": "${docker:containerName:-NoDocker}"},
                             { "key": "docker.imageName",  "value": "${docker:imageName:-NoDocker}"},
                             { "key": "docker.imageId",  "value": "${docker:imageId:-NoDocker}"},
-                            { "key": "kubernetes.clusterName",  "value": "${kubernetes:clusterName:-NoKubernetes}"},
-                            { "key": "kubernetes.host",  "value": "${kubernetes:host:-NoKubernetes}"},
-                            { "key": "kubernetes.hostIp",  "value": "${kubernetes:hostIp:-NoKubernetes}"},
-                            { "key": "kubernetes.podId",  "value": "${kubernetes:podId:-NoKubernetes}"},
-                            { "key": "kubernetes.podIp",  "value": "${kubernetes:podIp:-NoKubernetes}"},
-                            { "key": "kubernetes.podName",  "value": "${kubernetes:podName:-NoKubernetes}"},
-                            { "key": "kubernetes.namespaceName",  "value": "${kubernetes:namespaceName:-NoKubernetes}"},
-                            { "key": "kubernetes.imageId",  "value": "${kubernetes:imageId:-NoKubernetes}"},
-                            { "key": "kubernetes.imageName",  "value": "${kubernetes:imageName:-NoKubernetes}"}
+                            { "key": "kubernetes.clusterName",  "value": "${k8s:clusterName:-NoKubernetes}"},
+                            { "key": "kubernetes.host",  "value": "${k8s:host}"},
+                            { "key": "kubernetes.hostIp",  "value": "${k8s:hostIp:-NoKubernetes}"},
+                            { "key": "kubernetes.podId",  "value": "${k8s:podId:-NoKubernetes}"},
+                            { "key": "kubernetes.podIp",  "value": "${k8s:podIp:-NoKubernetes}"},
+                            { "key": "kubernetes.podName",  "value": "${k8s:podName:-NoKubernetes}"},
+                            { "key": "kubernetes.namespaceName",  "value": "${k8s:namespaceName:-NoKubernetes}"},
+                            { "key": "kubernetes.imageId",  "value": "${k8s:imageId}"},
+                            { "key": "kubernetes.imageName",  "value": "${k8s:imageName:-NoKubernetes}"},
+                            { "key": "turing.agent",  "value": "${agentName}"}
                         ]
                         
                     }

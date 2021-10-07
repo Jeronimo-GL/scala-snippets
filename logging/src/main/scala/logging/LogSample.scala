@@ -14,7 +14,7 @@ object MainLogging extends App {
 
   log.trace("Starting app")
   log.debug("Debugging")
-  println("Hola logging")
+  println("Hola logging  zzzzz")
   log.info("Hello from log4s")
   log.trace("Closing app")
 }

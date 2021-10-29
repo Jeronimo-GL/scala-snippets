@@ -1,7 +1,8 @@
 ThisBuild / version          := "0.1.0-SNAPSHOT"
 
 lazy val log4jVersion = "2.14.1"
-lazy val sparkVersion = "3.1.2"
+lazy val sparkVersion = "3.0.0"
+
 
 lazy val dependencies = new {
   val log4s            = "org.log4s" %% "log4s" % "1.8.2"
@@ -14,6 +15,7 @@ lazy val dependencies = new {
   val cats             = "org.typelevel" %% "cats-core" % "2.2.0"
   val spark            = "org.apache.spark" %% "spark-core" % sparkVersion// % "provided"
   val sparkSql         = "org.apache.spark" %% "spark-sql" % sparkVersion// % "provided"
+  val bigDL            ="com.intel.analytics.zoo" % "analytics-zoo-bigdl_0.12.1-spark_3.0.0"// % "0.10.0"// % "provided"
 }
 
 
@@ -29,6 +31,23 @@ lazy val spark  = project
     libraryDependencies ++=Seq(
       dependencies.spark,
       dependencies.sparkSql
+    ),
+    version:="0.0.1"
+  )
+
+lazy val bigdl = project
+  .in(file("modules/bigDL"))
+  .settings(
+    name:="BigDL samples",
+    fork:= true,
+    run / javaOptions ++= Seq(
+      "-Dlog4j.debug=false",
+      "-Dlog4j.configuration=log4j.properties"),
+    scalaVersion:="2.11.12",
+    libraryDependencies ++=Seq(
+      "com.intel.analytics.zoo" % "analytics-zoo-bigdl_0.12.2-spark_2.4.3" % "0.10.0",
+      "org.apache.spark" %% "spark-sql" % "2.4.3"
+//      "org.apache.spark" %% "spark-mllib" % "2.4.3" %  "provided"
     ),
     version:="0.0.1"
   )

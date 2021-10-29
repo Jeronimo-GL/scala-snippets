@@ -1,12 +1,13 @@
 import org.apache.spark.sql.SparkSession
 import scala.math.random
-
+import org.apache.hadoop.fs.Path
 object Main {
   def main(args: Array[String]) ={
      val spark = SparkSession
+
       .builder
        .appName("Spark Pi")
-       .master("local[1]")
+       .master("local[*]")
        .getOrCreate()
     val slices = if (args.length > 0) args(0).toInt else 2
     val n = math.min(1000000L * slices, Int.MaxValue).toInt // avoid overflow
@@ -16,6 +17,10 @@ object Main {
       if (x*x + y*y <= 1) 1 else 0
     }.reduce(_ + _)
     println(s"Pi is roughly ${4.0 * count / (n - 1)}")
+
+    val p =new Path("./")
+    
+    
     spark.stop()
   }
 }

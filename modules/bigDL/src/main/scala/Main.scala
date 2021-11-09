@@ -1,8 +1,8 @@
 import org.apache.spark.sql.SparkSession
 import com.intel.analytics.bigdl.utils.Engine
 
-object Main {
 
+object Main {
   def main(args: Array[String]) = {
     println("Hola mundo")
     holaBigDL()

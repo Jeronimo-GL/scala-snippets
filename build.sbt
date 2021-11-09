@@ -65,7 +65,7 @@ lazy val akka = project
 
 lazy val logging = project
   .in(file("modules/logging"))
-  .enablePlugins(DockerPlugin)
+//  .enablePlugins(DockerPlugin)
   .settings(
     name := "Logging",
     scalaVersion := "2.13.5",

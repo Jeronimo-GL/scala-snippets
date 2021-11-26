@@ -1,0 +1,24 @@
+* Emacs execution
+       :jvmOptions []
+       :environmentVariables []
+#+begin_src elisp
+(dap-register-debug-template
+ "Snipets - Run BigGL"
+ (list :class "Main"
+       :type "scala"
+       :request "launch"
+       :buildTarget "bigdl"
+       :name "BigDL debug"
+       )
+ )
+#+end_src
+
+#+RESULTS:
+| Snipets - Run BigGL | :class | Main         | :type    | scala            | :request   | launch       | :buildTarget | bigdl     | :name                 | BigDL debug |
+| Scala Attach        | :type  | scala        | :request | attach           | :name      | Scala Attach | :hostName    | localhost | :port                 | 0           |
+| Scala Main Class    | :class | <main.class> | :name    | Scala Main Class | :arguments | []           | :jvmOptions  | []        | :environmentVariables | []          |
+
+* BigDL
+** Links
+[[https://bigdl-project.github.io/master/#ProgrammingGuide/Model/Functional/][Documentación]]
+

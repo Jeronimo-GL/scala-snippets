@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+        "name": "Run SCopts 2",
+        "type": "scala",
+        "request": "launch",
+        "mainClass": "Main",
+        "buildTarget": "scopt",
+        "jvmOpts": [],
+        "args": ["-n", "Jero"],
+        "env":[]
+        }
+    ]
+}

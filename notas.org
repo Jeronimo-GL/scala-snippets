@@ -1,0 +1,43 @@
+** Ejecución dentro del depurador
+La forma habitual es usa la lens que aparece en los métodos ~main~.
+
+Pero si queremos pasar argumentos en la ejecución o variables de entorno tenemos que usar debug
+template de dap.
+
+Lo primero que tenemos que hacer es registrar el template, eso se hace con el comando
+~dap-debug-edit-template~ que nos abre un buffer para editar con el esqueleto mínimo. Este es un
+ejemplo
+
+#+begin_src elisp
+(dap-register-debug-template
+ "Snippets - SCopts"                  ; Nombre de la plantilla
+ (list :class "Main"
+       :type "scala"
+       :request: "attach"              ; launch, debug, attach
+       :buildTarget "scopt"           ; Nombre del target en SBT (root habitualmente)
+       :name "SCopt debug"            ; Nombre del buffer EMACS de salida
+       :arguments '("--name" "Jero")  ; Argumentos se pasan como una lista de lisp
+       :jvmOptions ()
+       :environmentVariables '(("DEV"  "1"))
+       )
+ )
+#+end_src
+
+#+RESULTS:
+| Snippets - SCopts | :class | Main         | :type    | scala            | :request:  | attach       | :buildTarget | scopt     | :name                 | SCopt debug | :arguments | (--name Jero) | :jvmOptions | nil | :environmentVariables | ((DEV 1)) |
+| Scala Attach      | :type  | scala        | :request | attach           | :name      | Scala Attach | :hostName    | localhost | :port                 | 0           |            |               |             |     |                       |           |
+| Scala Main Class  | :class | <main.class> | :name    | Scala Main Class | :arguments | []           | :jvmOptions  | []        | :environmentVariables | []          |            |               |             |     |                       |           |
+
+El primer parámetro (Run with args) es el nombre que aparecerá después en el menú cuando ejecutemos
+~dap-debug~. Los argumentos que recibe la función main van en arguments.
+
+~class~ es lo mas complicado. En scala 3 parece que se crea una clase con el nombre de cada función
+anotada con ~@main~. Se puede mirar las clases que ha generado en
+.bloop/root/bloop-internal-classes/classes-metals ...
+** Metals
+El metals que utiliza emacs está en ~/home/jeronimo/.emacs.d/.cache/lsp/metals~, para actualizarlo
+hace falta tener coursier.
+
+#+begin_src bash
+coursier update metals
+#+end_src

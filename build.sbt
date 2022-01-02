@@ -59,8 +59,8 @@ lazy val bigdl = project
     scalaVersion:="2.11.12",
     libraryDependencies ++=Seq(
       "com.intel.analytics.zoo" % "analytics-zoo-bigdl_0.12.2-spark_2.4.3" % "0.10.0",
-      "org.apache.spark" %% "spark-sql" % "2.4.3"
-//      "org.apache.spark" %% "spark-mllib" % "2.4.3" %  "provided"
+      "org.apache.spark" %% "spark-sql" % "2.4.3",
+      "org.apache.spark" %% "spark-mllib" % "2.4.3" %  "provided"
     ),
     version:="0.0.1"
   )
@@ -117,7 +117,7 @@ lazy val logMDC = project
   )
 
 
-lazy val general = project
+lazy val root = project
   .in(file("modules/general"))
   .settings(
     name := "Scala Snippets",

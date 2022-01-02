@@ -28,6 +28,7 @@ object Main {
   }
 
   def main(args: Array[String]): Unit = {
+    println(sys.env.get("DEV"))
     OParser.parse(parser, args, Configs("default", Seq.empty)) match {
       case Some(config) =>
         println(s"Hello, ${config.name}")
